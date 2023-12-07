@@ -1,0 +1,209 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Description of your API",
+    "version" : "1.0.0",
+    "title" : "Main Module"
+  },
+  "host" : "nitrocheatmainmodule.xflixq.repl.co",
+  "basePath" : "/docs",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/api/getBannedData" : {
+      "post" : {
+        "summary" : "Get banned user data",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/UserData"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          }
+        }
+      }
+    },
+    "/api/checkIfBanned" : {
+      "post" : {
+        "summary" : "Check if a user is banned",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ChangeUserRequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          }
+        }
+      }
+    },
+    "/api/getAllUsers" : {
+      "post" : {
+        "summary" : "Get statistics for all users",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/UserData"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          }
+        }
+      }
+    },
+    "/api/changeUser" : {
+      "post" : {
+        "summary" : "Change user ban type",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ChangeUserRequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          }
+        }
+      }
+    },
+    "/api/registerUser" : {
+      "post" : {
+        "summary" : "Register a new user",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/UserData"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "User registered successfully"
+          }
+        }
+      }
+    },
+    "/api/removeUser" : {
+      "post" : {
+        "summary" : "Remove a user from the banned list",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ChangeUserRequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User unbanned successfully"
+          }
+        }
+      }
+    },
+    "/api/getPendingUserData" : {
+      "post" : {
+        "summary" : "Get data for a pending user",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ChangeUserRequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          }
+        }
+      }
+    },
+    "/api/movePendingUserToGuild" : {
+      "post" : {
+        "summary" : "Move a pending user to the Guilds collection",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ChangeUserRequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User moved to Guilds collection successfully"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "UserData" : {
+      "type" : "object",
+      "properties" : {
+        "UserId" : {
+          "type" : "string"
+        },
+        "Username" : {
+          "type" : "string"
+        },
+        "DetectedTime" : {
+          "type" : "string"
+        },
+        "GameBannedIn" : {
+          "type" : "string"
+        },
+        "BanType" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ChangeUserRequest" : {
+      "type" : "object",
+      "properties" : {
+        "AuthToken" : {
+          "type" : "string"
+        },
+        "UserId" : {
+          "type" : "string"
+        },
+        "BanType" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
